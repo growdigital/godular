@@ -1,3 +1,3 @@
 # Godular — Hugo Modular CSS barebones site
 
-Uses Pipes.
+Uses [Hugo Pipes]. Or, it will do very soon.
