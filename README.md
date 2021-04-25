@@ -1,2 +1,3 @@
-# gomodular
-Barebones Modular CSS Hugo site, using Pipes
+# Gomodular — Hugo Modular CSS barebones site
+
+Uses Pipes.

@@ -1,0 +1,4 @@
+baseURL: https://gomodular.grwd.uk/
+languageCode: "en-GB"
+title: Modular CSS Hugo site
+theme: godular
