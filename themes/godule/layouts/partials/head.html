@@ -8,10 +8,9 @@
 
   {{ $style := resources.Get "css/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify }}
 
-  {{ $css := resources.Match "css/inhere/*.css" | resources.Concat "css/bundle.css" }}
+  {{ $css := resources.Match "css/inhere/*.css" }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
-  <link rel="stylesheet" href="css/bundle.css">
-
+  
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 	{{ with .OutputFormats.Get "RSS" -}}
 		{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
