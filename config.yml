@@ -2,3 +2,9 @@ baseURL: https://gomodular.grwd.uk/
 languageCode: "en-GB"
 title: Modular CSS Hugo site
 theme: godule
+
+# Set mount for theme assets directory
+module:
+  mounts:
+  - source: /themes/godule/assets
+    target: assets
