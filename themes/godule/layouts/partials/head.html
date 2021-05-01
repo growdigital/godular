@@ -6,10 +6,8 @@
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
+
   {{ $style := resources.Get "css/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify }}
-  {{ $plugins := resources.Get "css/inhere/thing1.css" }}
-  {{ $global := resources.Get "css/inhere/thing2.css" }}
-  {{ $css := slice $plugins $global | resources.Concat "css/bundle.css" }}
 
   <link rel="stylesheet" href="{{ $style.Permalink }}">
 
