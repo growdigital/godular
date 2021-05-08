@@ -6,34 +6,13 @@
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
-  <!-- Appends arrays -->
-  {{ $appendage := append (resources.Match "*.css") (resources.Match "**/*.css") }}
-  {{ $delimiter := delimit $appendage " " }}
+  {{ $css := append (resources.Match "*.css") (resources.Match "**/*.css") }}
+  {{ $css = $css | resources.Concat "css/app.css" | resources.PostCSS (dict "config" "./postcss.config.js")  | resources.Minify }}
+  <link rel="stylesheet" href="{{ $css.Permalink }}">
  
-  <!-- Hugo Pipes in operation, proof of concept -->
-  {{ $style := resources.Get "css/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify }}
-
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
-
-  <!-- Barebones stylesheet -->
-	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-
   {{ with .OutputFormats.Get "RSS" -}}
 		{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 	{{- end }}
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
 </head>
-
-<h1>$m question, how to concatenate CSS into single file?</h1>
-
-<pre>
-   $css := resources.Match "**/*.css" | resources.Concat
-</pre>
-
-<p>doesn't work!</p>
-
-<h1>This is the appended arrays:</h1>
-<h2>{{ $appendage }}</h2>
-<h1>This the delimited array:</h1>
-<h2>{{ $delimiter }}</h2>
