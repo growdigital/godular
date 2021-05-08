@@ -7,8 +7,11 @@
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
   <!-- Returns array, which is fabulous -->
-  {{ $css := resources.Match "**/*.css" }}
+  {{ $css := resources.Match "**/*.css"  }}
 
+  <!-- Delimit array, which is nice -->
+  {{ $string := delimit $css " " }}
+  
   <!-- Hugo Pipes in operation, proof of concept -->
   {{ $style := resources.Get "css/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify }}
 
@@ -35,3 +38,6 @@
 </pre>
 
 <p>doesn't work!</p>
+
+<h1>This is the delimited array:</h1>
+<p>{{ $string }}</p>
