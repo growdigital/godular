@@ -6,15 +6,32 @@
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
+  <!-- Returns array, which is fabulous -->
+  {{ $css := resources.Match "**/*.css" }}
 
+  <!-- Hugo Pipes in operation, proof of concept -->
   {{ $style := resources.Get "css/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify }}
 
   <link rel="stylesheet" href="{{ $style.Permalink }}">
 
+  <!-- Barebones stylesheet -->
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-	{{ with .OutputFormats.Get "RSS" -}}
+
+  {{ with .OutputFormats.Get "RSS" -}}
 		{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 	{{- end }}
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
 </head>
+
+<h1>This is the array: </h1>
+
+<p>{{ $css }}</p>
+
+<p>How do I concatenate the elements of the array?</p>
+
+<pre>
+   $css := resources.Match "**/*.css" | resources.Concat
+</pre>
+
+<p>doesn't work!</p>
