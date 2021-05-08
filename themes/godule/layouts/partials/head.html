@@ -6,12 +6,10 @@
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
-  <!-- Returns array, which is fabulous -->
-  {{ $css := resources.Match "**/*.css"  }}
-
-  <!-- Delimit array, which is nice -->
-  {{ $string := delimit $css " " }}
-  
+  <!-- Appends arrays -->
+  {{ $appendage := append (resources.Match "*.css") (resources.Match "**/*.css") }}
+  {{ $delimiter := delimit $appendage " " }}
+ 
   <!-- Hugo Pipes in operation, proof of concept -->
   {{ $style := resources.Get "css/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify }}
 
@@ -27,11 +25,7 @@
   {{ template "_internal/twitter_cards.html" . }}
 </head>
 
-<h1>This is the array: </h1>
-
-<p>{{ $css }}</p>
-
-<p>How do I concatenate the elements of the array?</p>
+<h1>$m question, how to concatenate CSS into single file?</h1>
 
 <pre>
    $css := resources.Match "**/*.css" | resources.Concat
@@ -39,5 +33,7 @@
 
 <p>doesn't work!</p>
 
-<h1>This is the delimited array:</h1>
-<p>{{ $string }}</p>
+<h1>This is the appended arrays:</h1>
+<h2>{{ $appendage }}</h2>
+<h1>This the delimited array:</h1>
+<h2>{{ $delimiter }}</h2>
