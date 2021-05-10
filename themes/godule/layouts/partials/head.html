@@ -7,7 +7,7 @@
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
   {{ $css := append (resources.Match "*.css") (resources.Match "**/*.css") }}
-  {{ $css = $css | resources.Concat "css/app.css" | resources.PostCSS (dict "config" "./postcss.config.js")  | resources.Minify }}
+  {{ $css = $css | resources.Concat "css/app.css" | resources.PostCSS (dict "config" "./postcss.config.js") }}
   <link rel="stylesheet" href="{{ $css.Permalink }}">
  
   {{ with .OutputFormats.Get "RSS" -}}
