@@ -1,6 +1,6 @@
 baseURL: https://godular.grwd.uk/
 languageCode: "en-GB"
-title: Modular CSS Hugo site
+title: Godular
 theme: godule
 
 # Set mount for theme assets directory
