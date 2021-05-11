@@ -1,13 +1,3 @@
-// module.exports = {
-// 	plugins: {
-// 		autoprefixer: {
-// 			browsers: [
-// 				"last 2 versions"
-// 			]
-// 		}
-// 	},
-// }
-
 module.exports = {
   plugins: {
     'postcss-css-variables': { },
