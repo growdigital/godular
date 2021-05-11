@@ -10,10 +10,6 @@
 
   /* Base variables, adapated from SUIT CSS
      ======================================================================== */
-
-  --base_font: sans-serif;
-  --base_fontsize: 16px;
-  --base_lineheight: 1.5;
 }
 /* ==========================================================================
    Base & type CSS
@@ -35,15 +31,21 @@
 html {
   background-color: white;
   color: black;
-  font-family: var(--base_font);
-  font-size: var(--base_fontsize);
-  line-height: var(--base_lineheight);
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-input, textarea {
-  font-family: var(--base_font);
-  font-size: var(--base_fontsize);
-  line-height: var(--base_lineheight);
+input {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+textarea {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 /* Links */
