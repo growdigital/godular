@@ -1,6 +1,7 @@
 baseURL: https://godular.grwd.uk/
 languageCode: "en-GB"
 title: Godular
+author: Jake
 theme: godule
 
 # Set mount for theme assets directory
