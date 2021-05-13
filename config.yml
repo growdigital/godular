@@ -1,8 +1,10 @@
 baseURL: https://godular.grwd.uk/
 languageCode: "en-GB"
 title: Godular
-author: Jake
 theme: godule
+
+params:
+  description: Hugo Modular CSS
 
 # Set mount for theme assets directory
 module:
