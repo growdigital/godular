@@ -3,16 +3,14 @@
     <h2><a href="{{ .Site.BaseURL }}" title="Link to home page">{{ .Site.Title }}</a></h2>
     <h3 class="p-note header__desc">{{ .Site.Params.Description }}</h3>
   </div>
-  {{ with .Site.Menus.main }}
   <nav class="nav">
     {{ $currentPage := . }}
     <ol class="o-list-bare nav__list">
-      {{ range . }}
+      {{ range .Site.Menus.main }}
       <li>
         <a class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
       </li>
       {{ end }}
     </ol>
   </nav>
-  {{ end }}
 </header>
